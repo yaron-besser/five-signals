@@ -40,9 +40,10 @@ everywhere.
 
 Role names that are function labels rather than characters were removed before
 the model ran. `build_credited_roles.sql` cuts role names appearing in 38 or
-more distinct movies, which is where the band stops being genuine character
-names and starts being Man, Mother, Student, Newscaster. Given names are kept
-on a keep-list, because a character called John is a real part.
+more distinct movies. 38 is the boundary: at 38 the band holds Man and
+Newscaster, both job titles, nothing sits at 37, and at 36 it holds Tony, a
+real character. A cut at 39 would keep two labels; a cut at 36 would delete a
+character. Three given names appear well above the cut and are kept by name.
 
 Effect on precision:
 
@@ -56,9 +57,9 @@ Effect on precision:
 The filter improves precision at every threshold from 2 up. **At the chosen
 threshold it is worth 6.7 points.**
 
-It is not free. 13,212 of 84,232 role rows are removed, which is 15.7%. Movies
-with any cast at all drop from 3,019 to 2,548, so 471 films lose their entire
-cast and cannot be reached by this model.
+It is not free. 13,212 of 84,232 role rows are removed, 15.7%: 5,349 blank
+roles and 7,863 generic labels. Movies with any cast drop from 3,019 to 2,548,
+so 471 films lose their entire cast and cannot be reached by this model.
 
 ## Against Model 4
 

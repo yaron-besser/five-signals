@@ -25,11 +25,9 @@ produced it.
 ## Three things that will bite you
 
 **Step 03 carries 400 primary key violations.** Two raters submitted their whole
-file twice. Step 04 removes them by measurement rather than by forcing the load
-through. This is why step 01 builds the personal table without constraints and
-step 04 puts them back. The approach is the lecturer's own documented
-procedure: create without protection, insert, identify violations, fix, then
-recreate with protection and verify.
+file twice. Step 01 builds the personal table without constraints and step 04
+puts them back, so the duplication is measured rather than forced through. The
+reasoning is in `docs/design_decisions.md`.
 
 **Step 04 must run exactly once.** Run it twice and it moves the
 already-filtered table into `_raw` and reports zero rows removed. That is a
@@ -54,10 +52,10 @@ aggregated and is used directly as the test ground truth.
 ## The data quality layer
 
 Step 04 removes 400 duplicate rows from 7,445, leaving 7,045 across 35 raters
-and 1,810 movies. All 400 duplicate keys were identical on all five columns,
-including justification and comment, so collapsing them loses no information.
+and 1,810 movies. All 400 were identical on all five columns, so collapsing
+them loses no information.
 
-Both tables are kept, `personal_movies_ranking_raw` before the filter and
-`personal_movies_ranking` after, so model performance can be measured with the
-layer on and off. Only Model 5 reads this table. Its measured result is that
-precision is unchanged, because the model deduplicates on the way in.
+Both tables are kept, raw and filtered, so model performance can be measured
+with the layer on and off. Only Model 5 reads this table, and its measured
+result is that precision is unchanged, because the model deduplicates on the
+way in.

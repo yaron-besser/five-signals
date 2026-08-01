@@ -5,11 +5,14 @@ recorded in the model folders.
 
 | File | What it shows |
 |---|---|
-| `fig1_model1.png` | Model 1. Five year windows sitting on top of each other, which is the finding: only the genre count moves precision |
-| `fig2_model2.png` | Model 2. The elbow at three shared actors, and the gap between raw and cleaned cast |
-| `fig3_model3.png` | Model 3. Precision climbing while the evidence behind it thins out |
-| `fig4_model5.png` | Model 5. One support floor removes the artefact, further floors do not help |
-| `fig5_summary.png` | Train against test for all five models and the combination |
+| `model_1_curve_grid.png` | Five year windows sitting on top of each other, which is the finding: only the genre count moves precision |
+| `model_2_curve_raw.png` | Model 2 on the raw cast |
+| `model_2_curve_credited.png` | The same on the cleaned cast. The gap between the two is what the data quality layer bought |
+| `model_3_curve_train.png` | Precision climbing while the evidence behind it thins out |
+| `model_5_curve_grid.png` | One support floor removes the artefact, further floors do not help |
 
-The tuning scripts in each model folder produce their own diagnostic plots when
-run. Those are working output and are not kept here.
+Model 4 has no threshold to tune, so it has no curve. The train against test
+summary chart in the report was produced from the final metrics table.
+
+Regenerate any of these by running the tuning script in the matching model
+folder.
