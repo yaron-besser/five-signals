@@ -45,7 +45,7 @@ This is the honest headline for this model.
 |---|---|---|---|---|
 | Curated list of 22 | 7,328 | 237 | 73.0% | 64.8% |
 | Any shared credited actor | 89,982 | 1,206 | 73.2% | 60.2% |
-| Actor with 3 or more credits | 82,122 | not recorded | 73.1% | not measured |
+| Actor with 3 or more credits | 82,122 | 1,188 | 73.1% | 60.3% |
 
 On train, three different definitions of "star" land within 0.2 points of each
 other. The curated list costs 92% of the volume and moves precision by -0.2
@@ -82,7 +82,7 @@ of the five, 8.2 points. A model with no threshold cannot overfit one.
 
 ## Limits
 
-Recall is 6.3% on train and 6.5% on test. The train precision figure rests on
+Recall is 6.3% on train and 6.4% on test. The train precision figure rests on
 237 rated pairs and the test figure on 230, which is thin for both. The
 with and without comparison for the data quality layer was not measured at this
 model's operating point.
