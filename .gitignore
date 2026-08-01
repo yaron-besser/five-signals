@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+
+# Word lock files
+~$*
+
+# Python
+__pycache__/
+*.pyc
+
+# local scratch
+*.log
+*.bak
+
+# Class data belonging to other students. See 01_pipeline/DATA_SOURCES.md
+01_pipeline/02_load_2025_train.sql
+01_pipeline/03_load_personal_rankings.sql
