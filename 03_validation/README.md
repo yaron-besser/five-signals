@@ -29,8 +29,8 @@ below 200.
 | 209 | 1 |
 | 225 | 1 |
 
-Rater names are omitted here. They belong to the class, not to this repository.
-See `01_pipeline/DATA_SOURCES.md`.
+Grouped by count rather than listed by rater, because the shape is the point.
+The names are in `01_pipeline/03_load_personal_rankings.sql`.
 
 Nobody was filtered for this. The data is valid, just not uniform in size.
 Worth remembering when reading Model 5: a rater with more movies takes part in
