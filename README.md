@@ -3,7 +3,7 @@
 Movie to movie recommendation system built in SQL over the IMDB dataset.
 
 Final project, Databases for Data Analytics, Reichman University, 2026B.
-Yaron Besser (324943109) and Nevo Aloni (322815820).
+Yaron Besser (324943109) and Nevo Alani (322815820).
 
 ## What this is
 

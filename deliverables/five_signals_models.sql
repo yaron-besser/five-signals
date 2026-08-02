@@ -3,7 +3,7 @@
 --
 -- Final project, Databases for Data Analytics, Reichman University, 2026B
 -- Team: five_signals
--- Yaron Besser (324943109), Nevo Aloni (322815820)
+-- Yaron Besser (324943109), Nevo Alani (322815820)
 --
 -- Five movie similarity models and the union that combines them into one
 -- recommendation table, my_models_agg.

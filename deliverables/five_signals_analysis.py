@@ -3,7 +3,7 @@ five_signals_analysis.py
 
 Final project, Databases for Data Analytics, Reichman University, 2026B
 Team: five_signals
-Yaron Besser (324943109), Nevo Aloni (322815820)
+Yaron Besser (324943109), Nevo Alani (322815820)
 
 The measurement half of the project. five_signals_models.sql builds the
 tables; this file reads them and produces every number in the report.
@@ -17,7 +17,7 @@ HOW TO RUN
 
     Needs pandas and sqlalchemy, and mysql-connector-python for the driver.
     Run five_signals_models.sql first. This file only reads, it creates
-    nothing and changes nothing. Takes about two minutes.
+    nothing and changes nothing. Takes about ten seconds.
 
 WHAT IT PRINTS
     0  Setup and the two baselines
