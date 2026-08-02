@@ -11,3 +11,7 @@ __pycache__/
 # local scratch
 *.log
 *.bak
+
+# local credentials, never committed
+.env
+**/.env
