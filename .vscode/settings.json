@@ -1,5 +1,6 @@
 {
     "python.defaultInterpreterPath": "/opt/anaconda3/bin/python3",
+    "python.pythonPath": "/opt/anaconda3/bin/python3",
     "python.envFile": "${workspaceFolder}/deliverables/.env",
     "python.terminal.activateEnvironment": false
 }

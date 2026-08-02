@@ -9,15 +9,18 @@ The measurement half of the project. five_signals_models.sql builds the
 tables; this file reads them and produces every number in the report.
 
 HOW TO RUN
+    pip install -r requirements.txt
     MYSQL_PASSWORD=yourpassword python3 five_signals_analysis.py
 
     Credentials come from the environment: MYSQL_USER, MYSQL_PASSWORD,
     MYSQL_HOST, MYSQL_DB. They default to root on localhost against imdb_ijs
     with no password.
 
-    Needs pandas and sqlalchemy, and mysql-connector-python for the driver.
-    Run five_signals_models.sql first. This file only reads, it creates
-    nothing and changes nothing. Takes about ten seconds.
+    Three packages are needed: pandas, sqlalchemy, and mysql-connector-python
+    for the driver. If any is missing this file says so and stops, rather than
+    failing on an import line. Run five_signals_models.sql first. This file
+    only reads, it creates nothing and changes nothing. Takes about ten
+    seconds.
 
 WHAT IT PRINTS
     0  Setup and the two baselines
@@ -47,9 +50,23 @@ FIGURES
 """
 
 import os
+import sys
 
-import pandas as pd
-from sqlalchemy import create_engine, inspect
+try:
+    import pandas as pd
+    from sqlalchemy import create_engine, inspect
+    import mysql.connector  # noqa: F401  the driver SQLAlchemy will use
+except ImportError as missing:
+    sys.exit(
+        f"\nMissing package: {missing.name}\n\n"
+        "This file needs three packages. Install them with:\n"
+        "    pip install -r requirements.txt\n"
+        "or directly:\n"
+        "    pip install pandas sqlalchemy mysql-connector-python\n\n"
+        f"The interpreter being used is:\n    {sys.executable}\n"
+        "If that is not the Python you installed the packages into, run this\n"
+        "file with the one that is.\n"
+    )
 
 # Override with environment variables if your credentials differ:
 #   MYSQL_USER, MYSQL_PASSWORD, MYSQL_HOST, MYSQL_DB
@@ -71,10 +88,20 @@ BASELINES = {"train": 0.513, "test": 0.491}
 # and the file still runs end to end on test alone.
 GROUND_TRUTH = {"train": "gt_pairs_train", "test": "movies_recommendations_agg"}
 
-SPLITS = [s for s in ("train", "test")
-          if inspect(ENGINE).has_table(GROUND_TRUTH[s])]
+try:
+    SPLITS = [s for s in ("train", "test")
+              if inspect(ENGINE).has_table(GROUND_TRUTH[s])]
+except Exception as err:
+    sys.exit(
+        f"\nCannot reach the database at {HOST}, schema {DB}, as user {USER}.\n\n"
+        "Set the credentials in the environment, for example:\n"
+        "    MYSQL_PASSWORD=yourpassword python3 five_signals_analysis.py\n"
+        "Available: MYSQL_USER, MYSQL_PASSWORD, MYSQL_HOST, MYSQL_DB.\n\n"
+        f"The server said:\n    {str(err).splitlines()[0]}\n"
+    )
 if not SPLITS:
-    raise SystemExit("No ground truth table found. Run the course files first.")
+    sys.exit("\nNo ground truth table found in schema " + DB + ".\n"
+             "Run the four course files, then five_signals_models.sql.\n")
 
 # Precision over a handful of labelled pairs is noise, not evidence.
 MIN_LABELLED_PAIRS = 100

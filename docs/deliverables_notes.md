@@ -36,12 +36,15 @@ course files have run. And section order matters in one place: section 0 builds
 the threshold curves and the final metrics table, including F1.
 
 ```
+pip install -r requirements.txt
 MYSQL_PASSWORD=yourpassword python3 five_signals_analysis.py
 ```
 
-Needs pandas, sqlalchemy and mysql-connector-python. Takes about 7 seconds and
-creates nothing. If `gt_pairs_train` is absent it skips every train figure and
-still runs end to end on test.
+Takes about 7 seconds and creates nothing. Every way it can fail prints a
+sentence saying what to do rather than a stack trace: a missing package names
+the package and the interpreter in use, and an unreachable database names the
+host, schema and user. If `gt_pairs_train` is absent it skips every train
+figure and still runs end to end on test.
 
 ## The report
 
