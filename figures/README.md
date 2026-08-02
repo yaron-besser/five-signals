@@ -11,8 +11,10 @@ recorded in the model folders.
 | `model_3_curve_train.png` | Precision climbing while the evidence behind it thins out |
 | `model_5_curve_grid.png` | One support floor removes the artefact, further floors do not help |
 
-Model 4 has no threshold to tune, so it has no curve. The train against test
-summary chart in the report was produced from the final metrics table.
+| `summary_train_vs_test.png` | Train against test precision for all six. The combination has the shortest drop and the tallest test bar |
+
+Model 4 has no threshold to tune, so it has no curve. The summary chart is
+rebuilt by `make_summary_figure.py` in this folder.
 
 Regenerate any of these by running the tuning script in the matching model
 folder.
