@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run five_signals_analysis",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/deliverables/five_signals_analysis.py",
+            "cwd": "${workspaceFolder}/deliverables",
+            "python": "/opt/anaconda3/bin/python3",
+            "envFile": "${workspaceFolder}/deliverables/.env",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
