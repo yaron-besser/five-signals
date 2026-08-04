@@ -45,8 +45,10 @@ ON THE SPLITS
     measured once, after all five models were locked.
 
 FIGURES
-    The five figures in the report came from the per model scripts in the
-    repository. Set MAKE_FIGURES = True below to regenerate them here.
+    This file prints tables, not charts. The report carries five figures, and
+    the scripts that drew them are in the repository under 04_models and
+    figures. Keeping plotting out of here means three dependencies instead of
+    four, and a run that writes nothing to disk.
 """
 
 import os
@@ -76,8 +78,6 @@ HOST = os.environ.get("MYSQL_HOST", "localhost")
 DB = os.environ.get("MYSQL_DB", "imdb_ijs")
 
 ENGINE = create_engine(f"mysql+mysqlconnector://{USER}:{PASSWORD}@{HOST}/{DB}")
-
-MAKE_FIGURES = False
 
 # A model that calls every pair good. Measured, not assumed.
 BASELINES = {"train": 0.513, "test": 0.491}
